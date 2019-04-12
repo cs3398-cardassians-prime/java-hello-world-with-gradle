@@ -62,4 +62,15 @@ public class TestGreeter {
 
    }
 
+  @Test
+  public void newtestBCGreeterPass()
+  {
+     
+      g.setName("Brian");
+
+      assertEquals(g.getName(),"Brian");
+
+      assertEquals(g.sayHello(),"Hello Brian!");
+  }
+
 }
