@@ -4,11 +4,9 @@ script: ./gradlew build
 
 deploy:
   provider: releases
-  api_key: 
-    secure: $GITHUB_TOKEN_JOHN
+  api_key: $GITHUB_TOKEN
   file_glob: true
   file: build/**/*
   skip_cleanup: true
   on:
-    branch: John
     tags: true
