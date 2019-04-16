@@ -70,14 +70,14 @@ public class TestGreeter {
       assertEquals(g.sayHello(),"Hello J Town!");
    }
    
-   // @Test
-   // public void testJBGreeterFail() 
-   // {
-      // g.setName("Johno");
-      // //g.setName("J Town");
-      // assertEquals(g.getName(),"J Town");
-      // assertEquals(g.sayHello(),"Hello Johno");
-   // }
+   @Test
+   public void testJBGreeterFail() 
+   {
+      g.setName("Johno");
+      //g.setName("J Town");
+      assertEquals(g.getName(),"J Town");
+      assertEquals(g.sayHello(),"Hello Johno");
+   }
 
    
    
