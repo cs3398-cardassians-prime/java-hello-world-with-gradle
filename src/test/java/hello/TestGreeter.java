@@ -76,4 +76,19 @@ public class TestGreeter {
       assertEquals(g.sayHello(),"Hello Isaac!");
       
    }
+   
+   @Test
+
+   public void newtestIWVTGreeterFail()
+
+   {
+   
+      g.setName("Isaac");
+
+      assertEquals(g.getName(),"Dr. Lehr");
+
+      assertEquals(g.sayHello(),"You are really good at writing tests.");
+      
+   }
+   
 }
