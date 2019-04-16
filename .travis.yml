@@ -10,5 +10,5 @@ deploy:
   file: build/**/*
   skip_cleanup: true
   on:
-    branch: john
+    branch: John
     tags: true
