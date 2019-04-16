@@ -62,4 +62,18 @@ public class TestGreeter {
 
    }
 
+
+   @Test
+
+   public void newtestIWVTGreeterPass()
+
+   {
+   
+      g.setName("Isaac");
+
+      assertEquals(g.getName(),"Isaac");
+
+      assertEquals(g.sayHello(),"Hello Isaac!");
+      
+   }
 }
