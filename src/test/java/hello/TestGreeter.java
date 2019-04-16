@@ -62,11 +62,20 @@ public class TestGreeter {
 
    }
 
+@Test
    public void RKGreeterPass(){
 
      g.setName("Ralph's Bungalow");
      assertEquals(g.getName(),"Ralph's Bungalow");
      assertEquals(g.sayHello(),"Hola Ralph's Bungalow!");
    }
+
+   @Test
+      public void RKGreeterFail(){
+
+        g.setName("LaCasaMia");
+        assertEquals(g.getName(),"Ralph's Bungalow");
+        assertEquals(g.sayHello(),"Hola Dingus
+      }
 
 }
