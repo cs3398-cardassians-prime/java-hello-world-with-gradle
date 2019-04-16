@@ -63,11 +63,11 @@ public class TestGreeter {
    }
    @Test
 
-   public void testFREDGreeterPass() 
+   public void testFREDGreeterFail() 
 
    {
 
-        g.setName("World");
+        g.setName("Darkness");
 
 	assertEquals(g.getName(),"World");
 
