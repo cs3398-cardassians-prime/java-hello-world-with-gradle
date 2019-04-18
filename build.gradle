@@ -29,8 +29,8 @@ jar {
 // end::jar[]
 
 // tag::dependencies[]
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 dependencies {
     compile "joda-time:joda-time:2.2"
@@ -87,6 +87,6 @@ dist.dependsOn(zipDist)
 dist.dependsOn(zipTest)
 // tag::wrapper[]
 wrapper {
-    gradleVersion = '4.9'
+    gradleVersion = '4.5'
 }
 // end::wrapper[]
