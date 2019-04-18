@@ -6,21 +6,25 @@
  * For more details take a look at the Java Quickstart chapter in the Gradle
  * user guide available at https://docs.gradle.org/2.8/userguide/tutorial_java_projects.html
  */
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
 mainClassName = 'hello.HelloWorld'
+
 // tag::repositories[]
 repositories {
     mavenCentral()
 }
 // end::repositories[]
+
 // tag::jar[]
 jar {
     baseName = 'jb-hello-world'
     version =  '0.1.0'
 }
 // end::jar[]
+
 // tag::dependencies[]
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -33,21 +37,26 @@ dependencies {
     testCompileOnly "org.apiguardian:apiguardian-api:1.0.0"
 }
 // end::dependencies[]
+
 task dist {
     description "Generate the dist(s) into the dist folder."
 }
+
 task distSetup {
     description "Generate the dist folder."
     delete "${projectDir}/dist"
+    
     copy {
         from "${buildDir}/libs"
         into "${projectDir}/dist/main"
     }
+
     copy {
         from "${projectDir}/build/classes/test/Output"
         into "${projectDir}/dist/test"
     }
 }
+
 task zipDist(type: Zip, dependsOn: distSetup) {
     from "${projectDir}/dist/main"
     from "${projectDir}/Readme.md"
@@ -58,6 +67,7 @@ task zipDist(type: Zip, dependsOn: distSetup) {
         println "Created ${zipDist.archiveName}"
     }
 }
+
 task zipTest(type: Zip, dependsOn: distSetup) {
     from "${projectDir}/dist/test"
     from "${projectDir}/Readme.md"
@@ -68,11 +78,14 @@ task zipTest(type: Zip, dependsOn: distSetup) {
         println "Created ${zipTest.archiveName}"
     }
 }
+
 distSetup.dependsOn(build)
 dist.dependsOn(zipDist)
 dist.dependsOn(zipTest)
+
 // tag::wrapper[]
-task wrapper(type: Wrapper) {
+wrapper {
     gradleVersion = '4.9'
 }
+
 // end::wrapper[]
