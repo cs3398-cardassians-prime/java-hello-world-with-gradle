@@ -144,7 +144,7 @@ dist.dependsOn(zipTest)
 
 // tag::wrapper[]
 
-task wrapper(type: Wrapper) {
+wrapper {
 
     gradleVersion = '4.9'
 
