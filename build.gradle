@@ -29,12 +29,12 @@ jar {
 // end::jar[]
 
 // tag::dependencies[]
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 dependencies {
     compile "joda-time:joda-time:2.2"
-    testCompile "junit:junit4.12"
+    testCompile "junit:junit:4.12"
     testCompile "org.junit.jupiter:junit-jupiter-api:5.0.1"
 // the following is a work around to fix the warning:
 //          warning: unknown enum constant Status.STABLE
@@ -88,6 +88,6 @@ dist.dependsOn(zipDist)
 dist.dependsOn(zipTest)
 // tag::wrapper[]
 wrapper {
-    gradleVersion = '4.5'
+    gradleVersion = '4.9'
 }
 // end::wrapper[]
