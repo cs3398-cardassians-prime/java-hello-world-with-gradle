@@ -70,13 +70,13 @@ public class TestGreeter {
      assertEquals(g.sayHello(),"Hola Ralph's Bungalow!");
    }
 
-   @Test
-      public void RKGreeterFail(){
-
-        g.setName("LaCasaMia");
-        assertEquals(g.getName(),"Ralph's Bungalow");
-        assertEquals(g.sayHello(),"Hola Dingus
+//   @Test
+//     public void RKGreeterFail(){
+//
+//        g.setName("LaCasaMia");
+//        assertEquals(g.getName(),"Ralph's Bungalow");
+//        assertEquals(g.sayHello(),"Hola Dingus
         
-      }
+   //   }
 
 }
