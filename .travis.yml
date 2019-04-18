@@ -1,6 +1,6 @@
 language: java
 # the following will skip the installation of dependencies.
-install: true
+install: false
 
 # the following forces the use of JDK 8
 # matrix:
