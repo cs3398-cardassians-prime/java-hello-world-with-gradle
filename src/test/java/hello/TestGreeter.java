@@ -74,15 +74,4 @@ public class TestGreeter {
   }
 
 
-  @Test
-  public void newtestBCGreeterFail()
-  {
-     
-      g.setName("Brian");
-
-      assertEquals(g.getName(),"Brian");
-
-      assertEquals(g.sayHello(),"Hellow Brian!");
-  }
-
 }
