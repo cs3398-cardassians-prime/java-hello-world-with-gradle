@@ -51,12 +51,12 @@ task distSetup {
     description "Generate the dist folder."
     delete "${projectDir}/dist"
     copy {
-        from "${buildDir}/libs"
-        into "${projectDir}/dist/main"
+        from "${buildDir}/build/distributions"
+        into "${projectDir}/dist/executables"
     }
     copy {
-        from "${projectDir}/build/classes/test/Output"
-        into "${projectDir}/dist/test"
+        from "${projectDir}/build/reports"
+        into "${projectDir}/dist/test_reports"
     }
 }
 
