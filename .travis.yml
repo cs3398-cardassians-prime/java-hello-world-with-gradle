@@ -1,13 +1,10 @@
 dist: xenial
 
 language: java
-script: 
-  -./gradle build
+script:
   - gradle clean build
   - tar -zcf hello_world_test_reports.tar.gz build/reports
   - tar -zcf hello_world_executable_distributions.tar.gz build/distributions
-  - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle/tree/John
-  - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle
   - ls -R
 
 before_deploy:
