@@ -1,32 +1,38 @@
-dist: xenial
-
 language: java
+# the following will skip the installation of dependencies.
+install: true
+
+# the following forces the use of JDK 8
+# matrix:
+#  include:
+# - jdk: oraclejdk8
+
 script:
-  ./gradlew build
   - gradle clean build
-  - tar -zcf hello_world_test_reports.tar.gz build/reports
-  - tar -zcf hello_world_executable_distributions.tar.gz build/distributions
-  - ls -R
+  - gradle dist --rerun-tasks
+# - gradle distSetup --rerun-tasks
+# - gradle zipDist --rerun-tasks
+# - gradle zipTest --rerun-tasks
 
 before_deploy:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
   - export GIT_TAG=$TRAVIS_BRANCH.$TRAVIS_BUILD_NUMBER
-  - echo "Just generated GIT_TAG"
-  - echo $GIT_TAG
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-  - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle
-  --tags
+  - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle  --tags
   - ls -R
-  
+
 deploy:
-  provider: releases
-  api_key:
-    secure: $GITPERM
-  file: 
-    - "README.md"
-    -  hello_world_test_reports.tar.gz 
-    -  hello_world_executable_distributions.tar.gz
   skip_cleanup: true
+  provider: releases
+  api_key: 
+    secure: $GITPERM
+
+  file:
+  - "README.md"
+  - "build.gradle"
+  - ".travis.yml"
+
   on:
-tags: false
+    tags: false
+all_branches: true
