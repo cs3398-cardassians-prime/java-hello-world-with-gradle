@@ -2,8 +2,8 @@ dist: xenial
 
 language: java
 script:
-  - gradle clean build
   ./gradlew build
+  - gradle clean build
   - tar -zcf hello_world_test_reports.tar.gz build/reports
   - tar -zcf hello_world_executable_distributions.tar.gz build/distributions
   - ls -R
