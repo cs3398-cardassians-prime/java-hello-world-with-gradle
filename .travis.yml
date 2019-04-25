@@ -17,7 +17,8 @@ before_deploy:
  - export GIT_TAG=$TRAVIS_BRANCH.$TRAVIS_BUILD_NUMBER
  - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
  - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle
-  --tags
+ - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle/tree/John
+ --tags
  - cd ..
  - pwd
  - ls -R
