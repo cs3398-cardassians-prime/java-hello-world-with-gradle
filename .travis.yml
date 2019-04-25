@@ -1,7 +1,11 @@
+dist: xenial
+
 language: java
 script: 
   - gradle clean build
-  - tar -zcf hello_world_build.tar.gz build
+  - tar -zcf hello_world_test_reports.tar.gz build/reports
+  - tar -zcf hello_world_executable_distributions.tar.gz build/distributions
+  - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle/tree/John
   - ls -R
 
 before_deploy:
@@ -12,7 +16,6 @@ before_deploy:
   - echo $GIT_TAG
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
   - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle
-  - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle/tree/John
   --tags
   - ls -R
   
@@ -22,7 +25,8 @@ deploy:
     secure: $GITPERM
   file: 
     - "README.md"
-    -  hello_world_build.tar.gz 
+    -  hello_world_test_reports.tar.gz 
+    -  hello_world_executable_distributions.tar.gz
   skip_cleanup: true
   on:
     tags: false
