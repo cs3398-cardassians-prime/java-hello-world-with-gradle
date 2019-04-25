@@ -1,42 +1,29 @@
 language: java
-# the following will skip the installation of dependencies.
-install: true
-  
-script:
- - gradle clean build
- - pwd
- - tar -zcf hello_world_build.tar.gz build
- - gradle distSetup
- - gradle distZip
- - gradle dist --rerun_tasks
- - ls -R
+script: 
+  - gradle clean build
+  - tar -zcf hello_world_build.tar.gz build
+  - ls -R
 
 before_deploy:
- - git config --global user.email "builds@travis-ci.com"
- - git config --global user.name "Travis CI"
- - export GIT_TAG=$TRAVIS_BRANCH.$TRAVIS_BUILD_NUMBER
- - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
- - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle
- - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle/tree/John
- --tags
- - cd ..
- - pwd
- - ls -R
-
+  - git config --global user.email "builds@travis-ci.com"
+  - git config --global user.name "Travis CI"
+  - export GIT_TAG=$TRAVIS_BRANCH.$TRAVIS_BUILD_NUMBER
+  - echo "Just generated GIT_TAG"
+  - echo $GIT_TAG
+  - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+  - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle
+  - git push -q https://$GITPERM@github.com/cs3398-cardassians-prime/java-hello-world-with-gradle/tree/John
+  --tags
+  - ls -R
+  
 deploy:
- skip_cleanup: true
- overwrite: true
- provider: releases
- api_key:
-   secure: $GITPERM
- file_glob: true
- file:
- - README.md
- - dist/
- - hello_world_build.tar.gz
- - *.gz
- - *
-
- on:
-   tags: false
-   all_branches: true
+  provider: releases
+  api_key:
+    secure: $GITPERM
+  file: 
+    - "README.md"
+    -  hello_world_build.tar.gz 
+  skip_cleanup: true
+  on:
+    tags: false
+  
