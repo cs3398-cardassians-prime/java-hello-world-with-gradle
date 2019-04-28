@@ -1,95 +1,34 @@
 package hello;
 
-
-
-import static org.junit.Assert.*;
-
-
-
-import org.junit.Before;
-
-import org.junit.Test;
-
-
-
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 
 public class TestGreeter {
 
-
-
-   private Greeter g;
-
-	
-
-   @Before
-
-   public void setUp() throws Exception 
-
-   {
-
-      g = new Greeter();
-
-   }
-
-
+   private Greeter g = new Greeter();
 
    @Test
-
+   @DisplayName("Test for Empty Name")
    public void testGreeterEmpty() 
 
    {
-
       assertEquals(g.getName(),"");
-
       assertEquals(g.sayHello(),"Hello!");
-
    }
 
-	
+
 
    @Test
-
+   @DisplayName("Test for Name='World'")
    public void testGreeter() 
-
    {
 
       g.setName("World");
-
       assertEquals(g.getName(),"World");
-
       assertEquals(g.sayHello(),"Hello World!");
-
    }
 
-
-   @Test
-
-   public void newtestIWVTGreeterPass()
-
-   {
-   
-      g.setName("Isaac");
-
-      assertEquals(g.getName(),"Isaac");
-
-      assertEquals(g.sayHello(),"Hello Isaac!");
-      
-   }
-/*   
-   @Test
-
-   public void newtestIWVTGreeterFail()
-
-   {
-   
-      g.setName("Isaac");
-
-      assertEquals(g.getName(),"Dr. Lehr");
-
-      assertEquals(g.sayHello(),"You are really good at writing tests.");
-      
-   }
-*/
-   
 }
